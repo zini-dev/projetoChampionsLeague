@@ -1,13 +1,13 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import router from "./routes/playerRoutes";
+
 
 function createApp() {
     const app = express();
 
-    app.use(express.json());
+    app.use(express.json()); //Middeware
 
-    app.get("/", (req: Request, res: Response) => {
-        res.status(200).json({ player: "Neymar Jr" })
-    });
+    app.use("/api", router)
 
     return app;
 };
